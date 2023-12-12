@@ -1,0 +1,53 @@
+[
+    {
+      "Name": "Alice Smith",
+      "email": "alice@example.com",
+      "password": "alice_password_hash",
+      "avatar": "avatar_url",
+      "Params": {
+        "age": 25,
+        "height": 163,
+        "weight": 58,
+        "chestCircumference": 90,
+        "waistCircumference": 70,
+        "hipCircumference": 95,
+        "bicepsCircumference": 30,
+        "calfCircumference": 35,
+        "neckCircumference": 35
+      }
+    },
+    {
+      "Name": "Bob Johnson",
+      "email": "bob@example.com",
+      "password": "bob_password_hash",
+      "avatar": "avatar_url",
+      "Params": {
+        "age": 28,
+        "height": 180,
+        "weight": 80,
+        "chestCircumference": 100,
+        "waistCircumference": 85,
+        "hipCircumference": 100,
+        "bicepsCircumference": 32,
+        "calfCircumference": 37,
+        "neckCircumference": 37
+      }
+    },
+    {
+      "Name": "Eve Wilson",
+      "email": "eve@example.com",
+      "password": "eve_password_hash",
+      "avatar": "avatar_url",
+      "Params": {
+        "age": 35,
+        "height": 170,
+        "weight": 65,
+        "chestCircumference": 95,
+        "waistCircumference": 75,
+        "hipCircumference": 98,
+        "bicepsCircumference": 31,
+        "calfCircumference": 36,
+        "neckCircumference": 36
+      }
+    }
+  ]
