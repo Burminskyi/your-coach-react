@@ -1,11 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import image from "../assets/31266204_7786995.svg";
+import image from "../assets/LEFT-Mandem-01.png";
+import { Link } from "react-router-dom";
 
 const ButtonBox = styled(Box)({
   display: "flex",
   alignItems: "center",
-  gap: "10px",
+  gap: "30px",
 });
 
 export const AuthSection = () => {
@@ -13,19 +14,45 @@ export const AuthSection = () => {
     <Box
       p={2}
       sx={{
-        backgroundColor: "greenyellow",
+        backgroundColor: "#70aad4",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-around",
+        justifyContent: "center",
+        gap: "20px",
         alignItems: "center",
         height: "100vh",
       }}
     >
-      <img src={image} alt="Your coach" style={{ width: "300px" }} />
-      <Typography sx={{ fontSize: "96px" }}>YourCoach</Typography>
+      <div
+        style={{
+          width: "200px",
+          height: "200px",
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
+      {/* <img src={image} alt="Your coach" style={{ maxWidth: "200px" }} /> */}
+      <Typography
+        sx={{
+          fontSize: "96px",
+          fontFamily: "Nova Square",
+          textAlign: "center",
+        }}
+      >
+        Your Coach
+      </Typography>
       <ButtonBox>
-        <Button variant="text">Sign Up</Button>
-        <Button variant="contained">Log In</Button>
+        <Link to="/register">
+          <Button variant="outlined" size="large" color="secondary">
+            Sign Up
+          </Button>
+        </Link>
+        <Link to="/login">
+          <Button variant="contained" size="large" color="secondary">
+            Sign in
+          </Button>
+        </Link>
       </ButtonBox>
     </Box>
   );
