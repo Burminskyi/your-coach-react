@@ -15,6 +15,7 @@ export const AuthSection = () => {
       p={2}
       sx={{
         backgroundColor: "#70aad4",
+        // backgroundColor: "#1976d2",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

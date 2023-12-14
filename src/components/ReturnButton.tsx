@@ -12,6 +12,8 @@ export const ReturnButton: FC<ReturnButtonProps> = ({ navigationParams }) => {
     <>
       <NavLink to={navigationParams}>
         <IconButton
+          //   color="secondary"
+          size="large"
           aria-label="return-to-mainpage"
           sx={{ position: "absolute", top: 10, left: 10 }}
         >
