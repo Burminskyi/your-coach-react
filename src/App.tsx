@@ -5,6 +5,11 @@ import RegisterPage from "./pages/RegisterPage";
 import "./styles.css"
 import SharedLayout from "./components/SharedLayout";
 import { CalendarPage } from "./pages/CalendarPage";
+import { WorkoutsPage } from "./pages/WorkoutsPage";
+import { StatisticsPage } from "./pages/StatisticsPage";
+import { ExercisesPage } from "./pages/ExercisesPage";
+import { FavoritesPage } from "./pages/FavoritesPage";
+import { ProfilePage } from "./pages/ProfilePage";
 
 
 
@@ -19,6 +24,11 @@ function App() {
 
         <Route element={<SharedLayout />}>
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/workouts" element={<WorkoutsPage />} />
+          <Route path="/statistics" element={<StatisticsPage />} />
+          <Route path="/exercises" element={<ExercisesPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           {/* <Route
             path="/account"
             element={

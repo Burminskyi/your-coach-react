@@ -32,9 +32,15 @@ const SharedLayout = () => {
         >
           <Stack direction="row" spacing={2} justifyContent="space-between">
             <Sidebar setMode={setMode} mode={mode} />
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
+            <Box
+              flex={5}
+              p={4}
+              sx={{ backgroundColor: "aquamarine", height: "100vh" }}
+            >
+              <Suspense fallback={<Loader />}>
+                <Outlet />
+              </Suspense>
+            </Box>
           </Stack>
           {/* <Add /> */}
         </div>

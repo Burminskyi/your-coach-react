@@ -59,8 +59,8 @@ export const Navbar = () => {
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          BURMINSKYI
+        <Typography variant="h4" sx={{ display: { xs: "none", sm: "block" }, fontFamily: "Nova Square", }}>
+        Your Coach
         </Typography>
         <Pets sx={{ display: { xs: "block", sm: "none" } }} />
         <Search sx={{ marginLeft: "10px", marginRight: "10px" }}>

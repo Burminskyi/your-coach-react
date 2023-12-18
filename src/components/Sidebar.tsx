@@ -16,6 +16,7 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 type SidebarProps = {
   mode: "light" | "dark";
@@ -32,52 +33,82 @@ export const Sidebar: React.FC<SidebarProps> = ({ mode, setMode }) => {
       <Box position="fixed">
         <List>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#calendar">
-              <ListItemIcon>
-                <CalendarMonth />
-              </ListItemIcon>
-              <ListItemText primary="Calendar" />
-            </ListItemButton>
+            <Link
+              to="/calendar"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ListItemButton component="div">
+                <ListItemIcon>
+                  <CalendarMonth />
+                </ListItemIcon>
+                <ListItemText primary="Calendar" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#workouts">
-              <ListItemIcon>
-                <PlaylistAdd />
-              </ListItemIcon>
-              <ListItemText primary="My workouts" />
-            </ListItemButton>
+            <Link
+              to="/workouts"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ListItemButton component="div">
+                <ListItemIcon>
+                  <PlaylistAdd />
+                </ListItemIcon>
+                <ListItemText primary="My workouts" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#statistics">
-              <ListItemIcon>
-                <BarChart />
-              </ListItemIcon>
-              <ListItemText primary="Statistics" />
-            </ListItemButton>
+            <Link
+              to="/statistics"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ListItemButton component="div">
+                <ListItemIcon>
+                  <BarChart />
+                </ListItemIcon>
+                <ListItemText primary="Statistics" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#exercises">
-              <ListItemIcon>
-                <FitnessCenter />
-              </ListItemIcon>
-              <ListItemText primary="Exercises" />
-            </ListItemButton>
+            <Link
+              to="/exercises"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ListItemButton component="div">
+                <ListItemIcon>
+                  <FitnessCenter />
+                </ListItemIcon>
+                <ListItemText primary="Exercises" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#favorites">
-              <ListItemIcon>
-                <Bookmark />
-              </ListItemIcon>
-              <ListItemText primary="Favorites" />
-            </ListItemButton>
+            <Link
+              to="/favorites"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ListItemButton component="div">
+                <ListItemIcon>
+                  <Bookmark />
+                </ListItemIcon>
+                <ListItemText primary="Favorites" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#profile">
-              <ListItemIcon>
-                <AccountBox />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
+            <Link
+              to="/profile"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <ListItemButton component="div">
+                <ListItemIcon>
+                  <AccountBox />
+                </ListItemIcon>
+                <ListItemText primary="Profile" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton component="button">
