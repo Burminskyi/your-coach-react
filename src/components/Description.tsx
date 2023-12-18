@@ -27,6 +27,7 @@ const DescriptionSectionLarge = styled.div`
   width: 70%;
   border-radius: 20px;
   border: 2px solid #9c27b0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.15);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
