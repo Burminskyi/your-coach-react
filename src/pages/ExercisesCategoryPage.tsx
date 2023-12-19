@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ExerciseCard from "../components/ExerciseCard";
-import { ImageList } from "@mui/material";
+import { ImageList, Pagination, Stack } from "@mui/material";
 
 export const ExercisesCategoryPage = () => {
   const [exercises, setExercises] = useState([]);
@@ -30,14 +30,16 @@ export const ExercisesCategoryPage = () => {
   }, []);
 
   return (
-    <div>
-      {" "}
-      <ImageList sx={{ width: "100%", height: "90%" }} cols={4}>
+    <>
+      <ImageList sx={{ width: "100%" }} cols={4}>
         {exercises &&
           exercises.map((exercise) => (
             <ExerciseCard key={exercise.id} data={exercise} />
           ))}
       </ImageList>
-    </div>
+      <Stack direction="row" justifyContent="center" mt={2}>
+        <Pagination count={10} color="primary"/>
+      </Stack>
+    </>
   );
 };

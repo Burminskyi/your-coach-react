@@ -44,7 +44,7 @@ const itemData = [
 
 export default function ExercisesPage() {
   return (
-    <ImageList sx={{ width: "100%"}} cols={3}>
+    <ImageList sx={{ width: "100%"}} cols={3} rowHeight={300}>
       {itemData.map((item) => (
        <Link to={`/exercises/${item.title.toLowerCase().split(" ").join("-")}`} key={item.img} style={{ textDecoration: "none" }}>
        <ImageListItem>
