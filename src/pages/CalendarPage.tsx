@@ -1,9 +1,11 @@
-import { Box } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
-export const CalendarPage = () => {
+export default function CalendarPage() {
   return (
-    <Box flex={5} p={4} sx={{backgroundColor:"aquamarine", height:"100vh"}}>
-      <h1>GUYVUYV</h1>
-    </Box>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DateCalendar />
+    </LocalizationProvider>
   );
-};
+}

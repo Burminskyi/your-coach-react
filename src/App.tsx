@@ -2,16 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import { MainPage } from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import "./styles.css"
+import "./styles.css";
 import SharedLayout from "./components/SharedLayout";
-import { CalendarPage } from "./pages/CalendarPage";
 import { WorkoutsPage } from "./pages/WorkoutsPage";
 import { StatisticsPage } from "./pages/StatisticsPage";
-import { ExercisesPage } from "./pages/ExercisesPage";
 import { FavoritesPage } from "./pages/FavoritesPage";
 import { ProfilePage } from "./pages/ProfilePage";
-
-
+import CalendarPage from "./pages/CalendarPage";
+import ExercisesPage from "./pages/ExercisesPage";
 
 function App() {
   return (
@@ -20,7 +18,6 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-
 
         <Route element={<SharedLayout />}>
           <Route path="/calendar" element={<CalendarPage />} />
