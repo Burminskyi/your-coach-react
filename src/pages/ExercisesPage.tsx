@@ -1,34 +1,7 @@
-// import React, { useEffect } from "react";
-// import axios from "axios";
-
-// export const ExercisesPage = () => {
-//   useEffect(() => {
-//     const options = {
-//       method: "GET",
-//       url: "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-//       headers: {
-//         "X-RapidAPI-Key": "3e207ae0ebmsh6bb994f43ecf86dp186bc8jsna3f70ef80fee",
-//         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-//       },
-//     };
-
-//     const fetchdata = async () => {
-//       try {
-//         const response = await axios.request(options);
-//         console.log(response.data);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-//     fetchdata();
-//   }, []);
-
-//   return <div>ExercisesPage</div>;
-// };
-
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import { Link } from "react-router-dom";
 
 const itemData = [
   {
@@ -71,17 +44,19 @@ const itemData = [
 
 export default function ExercisesPage() {
   return (
-    <ImageList sx={{ width: "100%", height: "90%" }} cols={3}>
+    <ImageList sx={{ width: "100%"}} cols={3}>
       {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar title={item.title} position="below" />
-        </ImageListItem>
+       <Link to={`/exercises/${item.title.toLowerCase().split(" ").join("-")}`} key={item.img} style={{ textDecoration: "none" }}>
+       <ImageListItem>
+         <img
+           srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+           src={`${item.img}?w=248&fit=crop&auto=format`}
+           alt={item.title}
+           loading="lazy"
+         />
+         <ImageListItemBar title={item.title} position="below" />
+       </ImageListItem>
+     </Link>
       ))}
     </ImageList>
   );

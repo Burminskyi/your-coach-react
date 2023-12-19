@@ -10,6 +10,7 @@ import { FavoritesPage } from "./pages/FavoritesPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import CalendarPage from "./pages/CalendarPage";
 import ExercisesPage from "./pages/ExercisesPage";
+import { ExercisesCategoryPage } from "./pages/ExercisesCategoryPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/workouts" element={<WorkoutsPage />} />
           <Route path="/statistics" element={<StatisticsPage />} />
           <Route path="/exercises" element={<ExercisesPage />} />
+          <Route path="/exercises/:name" element={<ExercisesCategoryPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           {/* <Route

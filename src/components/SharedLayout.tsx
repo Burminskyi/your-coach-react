@@ -35,7 +35,7 @@ const SharedLayout = () => {
             <Box
               flex={5}
               p={4}
-              sx={{ height: "100vh" }}
+              sx={{ minHeight: "100vh" }}
             >
               <Suspense fallback={<Loader />}>
                 <Outlet />
