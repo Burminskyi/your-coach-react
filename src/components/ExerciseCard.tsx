@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 export default function ExerciseCard({ data }) {
-  const { name, gifUrl, instructions, id } = data;
+  const { name, gifUrl, id } = data;
   return (
     
     <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>

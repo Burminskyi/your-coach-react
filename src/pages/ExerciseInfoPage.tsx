@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const ExercisePage = () => {
+export const ExerciseInfoPage = () => {
   const [exerciseInfo, setExerciseInfo] = useState();
   const { id } = useParams<{ id: string }>();
 

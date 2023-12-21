@@ -46,7 +46,14 @@ export default function ExercisesPage() {
   return (
     <ImageList sx={{ width: "100%"}} cols={3} rowHeight={300}>
       {itemData.map((item) => (
-       <Link to={`/exercises/${item.title.toLowerCase().split(" ").join("-")}`} key={item.img} style={{ textDecoration: "none" }}>
+       <Link
+       key={item.img}
+       to={{
+         pathname: `/exercises/${item.title.toLowerCase().split(" ").join("-")}`,
+         state: { item }, // Передача объекта item через state
+       }}
+       style={{ textDecoration: "none" }}
+     >
        <ImageListItem>
          <img
            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}

@@ -2,14 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ExerciseCard from "../components/ExerciseCard";
 import { ImageList, Pagination, Stack } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 export const ExercisesCategoryPage = () => {
   const [exercises, setExercises] = useState([]);
+  const { name } = useParams();
 
   useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://exercisedb.p.rapidapi.com/exercises/bodyPart/lower%20arms",
+      url: `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${name
+        .split("-")
+        .join(" ")}`,
       params: { limit: "10" },
       headers: {
         "X-RapidAPI-Key": "3e207ae0ebmsh6bb994f43ecf86dp186bc8jsna3f70ef80fee",
@@ -27,7 +31,7 @@ export const ExercisesCategoryPage = () => {
       }
     };
     fetchdata();
-  }, []);
+  }, [name]);
 
   return (
     <>
@@ -38,7 +42,7 @@ export const ExercisesCategoryPage = () => {
           ))}
       </ImageList>
       <Stack direction="row" justifyContent="center" mt={2}>
-        <Pagination count={10} color="primary"/>
+        <Pagination count={10} color="primary" />
       </Stack>
     </>
   );

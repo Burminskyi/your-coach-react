@@ -11,7 +11,7 @@ import { ProfilePage } from "./pages/ProfilePage";
 import CalendarPage from "./pages/CalendarPage";
 import ExercisesPage from "./pages/ExercisesPage";
 import { ExercisesCategoryPage } from "./pages/ExercisesCategoryPage";
-import { ExercisePage } from "./pages/ExercisePage";
+import { ExerciseInfoPage } from "./pages/ExerciseInfoPage";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
           <Route path="/statistics" element={<StatisticsPage />} />
           <Route path="/exercises" element={<ExercisesPage />} />
           <Route path="/exercises/:name" element={<ExercisesCategoryPage />} />
-          <Route path="/exercises/:name/:id" element={<ExercisePage />} />
+          <Route path="/exercises/:name/:id" element={<ExerciseInfoPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           {/* <Route
