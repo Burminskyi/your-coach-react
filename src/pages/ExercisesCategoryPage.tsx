@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 export const ExercisesCategoryPage = () => {
   const [exercises, setExercises] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const { name } = useParams();
 
   useEffect(() => {
@@ -14,7 +15,7 @@ export const ExercisesCategoryPage = () => {
       url: `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${name
         .split("-")
         .join(" ")}`,
-      params: { limit: "10" },
+      params: { limit: "10", offset: currentPage > 1 ? currentPage : "" },
       headers: {
         "X-RapidAPI-Key": "3e207ae0ebmsh6bb994f43ecf86dp186bc8jsna3f70ef80fee",
         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
