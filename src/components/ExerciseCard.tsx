@@ -5,12 +5,34 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import { Checkbox, IconButton } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavoriteWorkouts } from "../redux/Workouts/selectors";
+import {
+  removeFromFavoriteWorkouts,
+  setFavoriteWorkouts,
+} from "../redux/Workouts/slice";
 
 export default function ExerciseCard({ data }) {
   const { name, gifUrl, id } = data;
+  const favoriteWorkouts = useSelector(selectFavoriteWorkouts);
+  const dispatch = useDispatch();
+
+  const isInFavorites =
+    favoriteWorkouts &&
+    favoriteWorkouts.some((favoriteWorkout) => favoriteWorkout.id === data.id);
+
+  const handleFavoriteToggle = () => {
+    if (isInFavorites) {
+      dispatch(removeFromFavoriteWorkouts(id));
+    } else {
+      dispatch(setFavoriteWorkouts(data));
+    }
+  };
+
   return (
-    
-    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -22,8 +44,18 @@ export default function ExerciseCard({ data }) {
           {name}
         </Typography>
       </CardContent>
-      <CardActions sx={{ marginTop: 'auto' }}>
-        <Button size="small">Share</Button>
+
+      <CardActions disableSpacing>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={handleFavoriteToggle}
+        >
+          <Checkbox
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite sx={{ color: "red" }} />}
+            checked={isInFavorites}
+          />
+        </IconButton>
         <Link
           to={{
             pathname: `/exercises/${name}/${id}`,
