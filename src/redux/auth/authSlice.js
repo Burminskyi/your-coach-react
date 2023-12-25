@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  UpdateTokenThunk,
+  // UpdateTokenThunk,
   loginThunk,
   logoutThunk,
-  refreshUserThunk,
+  // refreshUserThunk,
   registerThunk,
-  updateUserThunk,
+  // updateUserThunk,
 } from './operations';
 
 const initialState = {
@@ -70,20 +70,20 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
       // -----------Refresh-------------
-      .addCase(refreshUserThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(refreshUserThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isAuthentificated = true;
-        state.userData = action.payload;
-        state.isRefreshing = false;
-      })
-      .addCase(refreshUserThunk.rejected, (state) => {
-        state.isLoading = false;
-        state.isRefreshing = false;
-      })
+      // .addCase(refreshUserThunk.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
+      // .addCase(refreshUserThunk.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isAuthentificated = true;
+      //   state.userData = action.payload;
+      //   state.isRefreshing = false;
+      // })
+      // .addCase(refreshUserThunk.rejected, (state) => {
+      //   state.isLoading = false;
+      //   state.isRefreshing = false;
+      // })
       // -----------Logout-------------
       .addCase(logoutThunk.pending, (state) => {
         state.isLoading = true;
@@ -101,34 +101,34 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
       // -----------Update user-------------
-      .addCase(updateUserThunk.pending, (state) => {
-        state.isLoading = true;
-        state.isUpdating = false;
-        state.error = null;
-      })
-      .addCase(updateUserThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isUpdating = true;
-        state.userData = action.payload;
-      })
-      .addCase(updateUserThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isUpdating = false;
-        state.error = action.payload;
-      })
+      // .addCase(updateUserThunk.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.isUpdating = false;
+      //   state.error = null;
+      // })
+      // .addCase(updateUserThunk.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isUpdating = true;
+      //   state.userData = action.payload;
+      // })
+      // .addCase(updateUserThunk.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isUpdating = false;
+      //   state.error = action.payload;
+      // })
       //----------------Update token------------------
-      .addCase(UpdateTokenThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(UpdateTokenThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.token = action.meta.arg;
-      })
-      .addCase(UpdateTokenThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action;
-      }),
+      // .addCase(UpdateTokenThunk.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
+      // .addCase(UpdateTokenThunk.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.token = action.meta.arg;
+      // })
+      // .addCase(UpdateTokenThunk.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action;
+      // }),
 });
 
 export const authReducer = authSlice.reducer;
