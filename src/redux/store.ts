@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,10 +8,11 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import { workoutsReducer } from "./Workouts/slice";
+import { workoutsReducer } from "./workouts/workoutsSlice";
+import { authReducer } from "./auth/authSlice";
 
 const workoutsPersistConfig = {
   key: "workouts",
@@ -19,9 +20,16 @@ const workoutsPersistConfig = {
   whitelist: ["favoriteWorkouts"],
 };
 
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
+
 export const store = configureStore({
   reducer: {
     workouts: persistReducer(workoutsPersistConfig, workoutsReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -8,11 +8,11 @@ import { Link } from "react-router-dom";
 import { Checkbox, IconButton } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFavoriteWorkouts } from "../redux/Workouts/selectors";
+import { selectFavoriteWorkouts } from "../redux/workouts/selectors";
 import {
   removeFromFavoriteWorkouts,
   setFavoriteWorkouts,
-} from "../redux/Workouts/slice";
+} from "../redux/workouts/workoutsSlice";
 
 export default function ExerciseCard({ data }) {
   const { name, gifUrl, id } = data;

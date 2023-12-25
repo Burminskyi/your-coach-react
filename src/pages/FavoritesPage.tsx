@@ -1,5 +1,5 @@
 import { ImageList } from "@mui/material";
-import { selectFavoriteWorkouts } from "../redux/Workouts/selectors";
+import { selectFavoriteWorkouts } from "../redux/workouts/selectors";
 import { useSelector } from "react-redux";
 import ExerciseCard from "../components/ExerciseCard";
 
