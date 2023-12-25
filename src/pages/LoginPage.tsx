@@ -13,19 +13,42 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ReturnButton } from "../components/ReturnButton";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
+import {
+  selectError,
+  selectIsLoadingStatus,
+  selectAuthenticationStatus,
+} from "../redux/auth/selectors";
+import {
+  // UpdateTokenThunk,
+  loginThunk,
+  // refreshUserThunk,
+} from "../redux/auth/operations";
+import { useDispatch, useSelector } from "react-redux";
 
 const defaultTheme = createTheme();
 
 export default function LoginPage() {
+  const authenticated = useSelector(selectAuthenticationStatus);
+  const authError = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoadingStatus);
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const email = data.get("email");
+    const password = data.get("password");
+    dispatch(
+      loginThunk({
+        email,
+        password,
+      })
+    );
   };
+
+  if (authenticated) return <Navigate to="/calendar" />;
 
   return (
     <ThemeProvider theme={defaultTheme}>
