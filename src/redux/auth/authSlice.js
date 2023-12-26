@@ -3,7 +3,7 @@ import {
   // UpdateTokenThunk,
   loginThunk,
   logoutThunk,
-  // refreshUserThunk,
+  refreshUserThunk,
   registerThunk,
   // updateUserThunk,
 } from './operations';
@@ -70,20 +70,20 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
       // -----------Refresh-------------
-      // .addCase(refreshUserThunk.pending, (state) => {
-      //   state.isLoading = true;
-      //   state.error = null;
-      // })
-      // .addCase(refreshUserThunk.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.isAuthentificated = true;
-      //   state.userData = action.payload;
-      //   state.isRefreshing = false;
-      // })
-      // .addCase(refreshUserThunk.rejected, (state) => {
-      //   state.isLoading = false;
-      //   state.isRefreshing = false;
-      // })
+      .addCase(refreshUserThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(refreshUserThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isAuthentificated = true;
+        state.userData = action.payload;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUserThunk.rejected, (state) => {
+        state.isLoading = false;
+        state.isRefreshing = false;
+      })
       // -----------Logout-------------
       .addCase(logoutThunk.pending, (state) => {
         state.isLoading = true;

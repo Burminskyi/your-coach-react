@@ -12,8 +12,25 @@ import CalendarPage from "./pages/CalendarPage";
 import ExercisesPage from "./pages/ExercisesPage";
 import { ExercisesCategoryPage } from "./pages/ExercisesCategoryPage";
 import { ExerciseInfoPage } from "./pages/ExerciseInfoPage";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAuthenticationStatus,
+  selectToken,
+} from "./redux/auth/selectors";
+import { refreshUserThunk } from "./redux/auth/operations";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const authenticated = useSelector(selectAuthenticationStatus);
+
+  useEffect(() => {
+    if (!token || authenticated) return;
+
+    dispatch(refreshUserThunk());
+  }, [authenticated, dispatch, token]);
+
   return (
     <>
       <Routes>

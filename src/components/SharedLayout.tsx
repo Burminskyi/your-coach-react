@@ -1,9 +1,11 @@
 import { Box, Stack, ThemeProvider, createTheme } from "@mui/material";
 import { Suspense, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Navbar } from "./Navbar";
 import { Loader } from "./Loader";
+import { useSelector } from "react-redux";
+import { selectAuthenticationStatus } from "../redux/auth/selectors";
 
 type CustomTheme = {
   palette: {
@@ -12,6 +14,7 @@ type CustomTheme = {
 };
 
 const SharedLayout = () => {
+  const authenticated = useSelector(selectAuthenticationStatus);
   const [mode, setMode] = useState<"light" | "dark">("dark");
 
   const darkTheme: CustomTheme = createTheme({
@@ -19,6 +22,8 @@ const SharedLayout = () => {
       mode: mode,
     },
   });
+  if (!authenticated) return <Navigate to="/" />;
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
@@ -32,11 +37,7 @@ const SharedLayout = () => {
         >
           <Stack direction="row" spacing={2} justifyContent="space-between">
             <Sidebar setMode={setMode} mode={mode} />
-            <Box
-              flex={5}
-              p={4}
-              sx={{ minHeight: "100vh" }}
-            >
+            <Box flex={5} p={4} sx={{ minHeight: "100vh" }}>
               <Suspense fallback={<Loader />}>
                 <Outlet />
               </Suspense>

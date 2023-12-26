@@ -41,22 +41,22 @@ export const loginThunk = createAsyncThunk(
   },
 );
 
-// export const refreshUserThunk = createAsyncThunk(
-//   'auth/refreshUser',
-//   async (_, thunkApi) => {
-//     const token = thunkApi.getState().auth.token;
-//     if (!token) return thunkApi.rejectWithValue(null);
+export const refreshUserThunk = createAsyncThunk(
+  'auth/refreshUser',
+  async (_, thunkApi) => {
+    const token = thunkApi.getState().auth.token;
+    if (!token) return thunkApi.rejectWithValue(null);
 
-//     try {
-//       setToken(token);
-//       const { data } = await $instance.get('/users/current');
+    try {
+      setToken(token);
+      const { data } = await $instance.get('/auth/current');
 
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(null);
-//     }
-//   },
-// );
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(null);
+    }
+  },
+);
 
 export const logoutThunk = createAsyncThunk(
   'auth/logout',

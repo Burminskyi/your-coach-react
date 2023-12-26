@@ -9,6 +9,7 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
+  Button,
   List,
   ListItem,
   ListItemButton,
@@ -16,7 +17,9 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutThunk } from "../redux/auth/operations";
 
 type SidebarProps = {
   mode: "light" | "dark";
@@ -24,13 +27,20 @@ type SidebarProps = {
 };
 
 export const Sidebar: React.FC<SidebarProps> = ({ mode, setMode }) => {
+  const dispatch = useDispatch();
+
+  const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(logoutThunk());
+  };
+
   const handleModeChange = () => {
     setMode(mode === "light" ? "dark" : "light");
   };
 
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Box position="fixed">
+      <Box position="fixed" sx={{ height: "100vh" }}>
         <List>
           <ListItem disablePadding>
             <Link
@@ -119,6 +129,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
         </List>
+        <Button onClick={handleLogout}>Log Out</Button>
       </Box>
     </Box>
   );
