@@ -5,7 +5,9 @@ import { setParamsThunk } from "../redux/userParams/operations.js";
 
 export const ProfilePage = () => {
   const dispatch = useDispatch();
+  const currentDate = new Date().toISOString().split('T')[0]; 
   const [userParams, setUserParams] = useState({
+    date: currentDate,
     age: "",
     height: "",
     weight: "",
@@ -17,13 +19,13 @@ export const ProfilePage = () => {
     neckCircumference: "",
   });
 
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     dispatch(setParamsThunk(userParams));
 
     setUserParams({
+      date: currentDate,
       age: "",
       height: "",
       weight: "",
@@ -44,9 +46,15 @@ export const ProfilePage = () => {
     }));
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
+      <TextField
+        type="date"
+        id="date"
+        name="date"
+        value={userParams.date}
+        onChange={handleInputChange}
+      />
       <TextField
         style={{ width: "200px", margin: "5px" }}
         type="text"
