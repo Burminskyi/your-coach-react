@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 
 import { workoutsReducer } from "./workouts/workoutsSlice";
 import { authReducer } from "./auth/authSlice";
+import { userParamsReducer } from "./userParams/userParamsSlice.js";
 
 const workoutsPersistConfig = {
   key: "workouts",
