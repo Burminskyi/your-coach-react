@@ -1,39 +1,49 @@
 import { Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setParamsThunk } from "../redux/userParams/operations.js";
 
 export const ProfilePage = () => {
   const dispatch = useDispatch();
+  const [userParams, setUserParams] = useState({
+    age: "",
+    height: "",
+    weight: "",
+    chestCircumference: "",
+    waistCircumference: "",
+    hipCircumference: "",
+    bicepsCircumference: "",
+    calfCircumference: "",
+    neckCircumference: "",
+  });
+
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    const age = data.get("age");
-    const height = data.get("height");
-    const weight = data.get("weight");
-    const chestCircumference = data.get("chestCircumference");
-    const waistCircumference = data.get("waistCircumference");
-    const hipCircumference = data.get("hipCircumference");
-    const bicepsCircumference = data.get("bicepsCircumference");
-    const calfCircumference = data.get("calfCircumference");
-    const neckCircumference = data.get("neckCircumference");
+    dispatch(setParamsThunk(userParams));
 
-
-    dispatch(
-      setParamsThunk({
-        age,
-        height,
-        weight,
-        chestCircumference,
-        waistCircumference,
-        hipCircumference,
-        bicepsCircumference,
-        calfCircumference,
-        neckCircumference
-      })
-    );
+    setUserParams({
+      age: "",
+      height: "",
+      weight: "",
+      chestCircumference: "",
+      waistCircumference: "",
+      hipCircumference: "",
+      bicepsCircumference: "",
+      calfCircumference: "",
+      neckCircumference: "",
+    });
   };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setUserParams((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -44,6 +54,8 @@ export const ProfilePage = () => {
         name="age"
         label="Age"
         variant="outlined"
+        value={userParams.age}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -53,6 +65,8 @@ export const ProfilePage = () => {
         name="height"
         label="Height"
         variant="outlined"
+        value={userParams.height}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -62,6 +76,8 @@ export const ProfilePage = () => {
         name="weight"
         label="Weight"
         variant="outlined"
+        value={userParams.weight}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -71,6 +87,8 @@ export const ProfilePage = () => {
         name="chestCircumference"
         label="Chest circumference"
         variant="outlined"
+        value={userParams.chestCircumference}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -80,6 +98,8 @@ export const ProfilePage = () => {
         name="waistCircumference"
         label="Waist circumference"
         variant="outlined"
+        value={userParams.waistCircumference}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -89,6 +109,8 @@ export const ProfilePage = () => {
         name="hipCircumference"
         label="Hip circumference"
         variant="outlined"
+        value={userParams.hipCircumference}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -98,6 +120,8 @@ export const ProfilePage = () => {
         name="bicepsCircumference"
         label="Biceps circumference"
         variant="outlined"
+        value={userParams.bicepsCircumference}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -107,6 +131,8 @@ export const ProfilePage = () => {
         name="calfCircumference"
         label="Calf circumference"
         variant="outlined"
+        value={userParams.calfCircumference}
+        onChange={handleInputChange}
       />
       <br />
       <TextField
@@ -116,6 +142,8 @@ export const ProfilePage = () => {
         name="neckCircumference"
         label="Neck circumference"
         variant="outlined"
+        value={userParams.neckCircumference}
+        onChange={handleInputChange}
       />
       <br />
       <Button type="submit" variant="contained" color="primary">
