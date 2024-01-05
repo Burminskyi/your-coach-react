@@ -6,6 +6,7 @@ import { AddParamsModal } from "../components/AddParamsModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllParamsThunk } from "../redux/userParams/operations.js";
 import { selectUserParams } from "../redux/userParams/selectors.js";
+import { ParamsCard } from "../components/ParamsCard.js";
 
 export const ProfilePage = () => {
   const userParams = useSelector(selectUserParams);
@@ -32,13 +33,13 @@ export const ProfilePage = () => {
       </Tooltip>
       <Box>
         {userParams.length > 0 && (
-          <div>
+          <div style={{
+            display:"flex",
+            flexWrap:"wrap",
+            gap:"30px"
+          }}>
             {userParams.map((param) => (
-              <div key={param.id}>
-                <p>age: {param.age}</p>
-                <p>height: {param.height}</p>
-                <p>weight: {param.weight}</p>
-              </div>
+              <ParamsCard params={param} />
             ))}
           </div>
         )}

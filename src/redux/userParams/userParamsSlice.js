@@ -23,6 +23,7 @@ const userParamsSlice = createSlice({
       })
       .addCase(setParamsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.userParams.push(action.payload)
       })
       .addCase(setParamsThunk.rejected, (state, action) => {
         state.isLoading = false;

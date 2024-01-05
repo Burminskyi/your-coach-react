@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setParamsThunk } from "../redux/userParams/operations.js";
 
-
 const StyledModal = styled(Modal)({
   display: "flex",
   alignItems: "center",
@@ -176,7 +175,12 @@ export const AddParamsModal = ({ open, setOpen }) => {
               value={userParams.neckCircumference}
               onChange={handleInputChange}
             />
-            <Button type="submit" variant="contained" color="primary">
+            <Button
+              onClick={handleSubmit}
+              type="button"
+              variant="contained"
+              color="primary"
+            >
               save
             </Button>
           </FormGroup>
