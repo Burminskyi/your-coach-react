@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
     setParamsThunk,
+    getAllParamsThunk
 } from './operations';
 
 const initialState = {
   isLoading: false,
   error: null,
+  userParams: []
 };
 
 const userParamsSlice = createSlice({
@@ -26,21 +28,19 @@ const userParamsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      // -----------Get Params-------------
-    //   .addCase(loginThunk.pending, (state) => {
-    //     state.isLoading = true;
-    //     state.error = null;
-    //   })
-    //   .addCase(loginThunk.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isAuthentificated = true;
-    //     state.token = action.payload.token;
-    //     state.userData = action.payload.userData;
-    //   })
-    //   .addCase(loginThunk.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.error = action.payload;
-    //   })
+    //   -----------Get All Params-------------
+      .addCase(getAllParamsThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllParamsThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userParams = action.payload;
+      })
+      .addCase(getAllParamsThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
 });
 
 export const userParamsReducer = userParamsSlice.reducer;

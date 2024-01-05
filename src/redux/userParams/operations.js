@@ -3,7 +3,7 @@ import { $instance } from '../auth/operations';
 
 
 export const setParamsThunk = createAsyncThunk(
-  'user/params',
+  'user/setParams',
   async (userData, thunkApi) => {
     try {
       const { data } = await $instance.post('/user/params', userData);
@@ -14,5 +14,18 @@ export const setParamsThunk = createAsyncThunk(
     }
   },
 );
+
+export const getAllParamsThunk = createAsyncThunk(
+    'user/addParams',
+    async (userData, thunkApi) => {
+      try {
+        const { data } = await $instance.get('/user/params');
+  
+        return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
+      }
+    },
+  );
 
 

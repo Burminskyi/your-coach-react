@@ -31,6 +31,7 @@ export const store = configureStore({
   reducer: {
     workouts: persistReducer(workoutsPersistConfig, workoutsReducer),
     auth: persistReducer(authPersistConfig, authReducer),
+    params: userParamsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
